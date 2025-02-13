@@ -1,5 +1,7 @@
 package com.projects.book.user;
 
+import com.projects.book.book.Book;
+import com.projects.book.history.BookTransactionHistory;
 import com.projects.book.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -49,10 +51,14 @@ public class User implements UserDetails, Principal {
     @Column(insertable = false)//it's updatable & nullable
     private LocalDateTime lastModifiedDate;
 
+    @OneToMany(mappedBy = "user")
+    private List<BookTransactionHistory> histories;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
+    @OneToMany(mappedBy = "owner") //it determines which attribute whose mapped to these books
+    private List<Book> books;
 
 
     @Override

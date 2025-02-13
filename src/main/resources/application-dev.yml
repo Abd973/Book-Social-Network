@@ -38,6 +38,9 @@ spring:
     mailing:
       frontend:
         activation-url: http://localhost:4200/activate-account
+    file:
+      upload:
+        photos-output-path: ./uploads
       smtp:
         host: localhost     # MailDev runs on localhost
         port: 1025          # SMTP port for MailDev
